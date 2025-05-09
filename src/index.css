@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Dtawa';
+  src: url('./assets/fonts/Jersey15-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-dtawa {
+  font-family: 'Dtawa', sans-serif;
+}
