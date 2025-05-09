@@ -1,4 +1,4 @@
-import HeroArea from "../Hero Area/HeroArea";
+import HeroArea from "../HeroArea/HeroArea";
 import Navbar from "../Navbar/Navbar";
 
 export default function Header() {
