@@ -26,7 +26,7 @@ export default function Main() {
         <h2 className="text-2xl font-black">جاسوییچی</h2>
         <hr className="w-full h-1 my-5" />
         <p className="w-full flex justify-end mb-2 font-bold text-gray-500">دیدن همه محصولات</p>
-        <div className="grid grid-cols-4 grid-rows-1 gap-20">
+        <div className="grid grid-cols-4 grid-rows-1 gap-20 mb-10">
             <ProductItem />
             <ProductItem />
             <ProductItem />
