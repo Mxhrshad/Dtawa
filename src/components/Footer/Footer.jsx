@@ -1,44 +1,35 @@
 export default function Footer() {
   return (
     <div
-      className="w-full text-white flex flex-col items-center justify-center"
-      style={{
-        height: '15rem',
-        background: 'linear-gradient(275deg, rgba(255, 34, 9, 1) 0%, rgba(153, 20, 6, 1) 67%)',
-      }}
+      className="w-full h-60 text-white flex flex-col items-center justify-center bg-gradient-to-r from-red-600 to-red-800"
     >
-      <div className="w-full max-w-6xl flex justify-between items-center px-8">
-
-        <div className="text-2xl font-dtawa">Dtawa</div>
-
-        <div className="flex gap-6">
-          <a href="/" className="hover:underline">
+      <div className="w-full max-w-6xl flex flex-col md:flex-row justify-between items-center px-8">
+        <div className="text-2xl font-dtawa mb-4 md:mb-0">Dtawa</div>
+        <div className="flex flex-wrap gap-6 justify-center">
+          <a href="/" className="hover:underline hover:text-gray-300 transition-colors duration-300">
             خانه
           </a>
-          <a href="/about" className="hover:underline">
+          <a href="/about" className="hover:underline hover:text-gray-300 transition-colors duration-300">
             درباره ما
           </a>
-          <a href="/contact" className="hover:underline">
+          <a href="/contact" className="hover:underline hover:text-gray-300 transition-colors duration-300">
             ارتباط با ما
           </a>
-          <a href="/shop" className="hover:underline">
+          <a href="/shop" className="hover:underline hover:text-gray-300 transition-colors duration-300">
             خرید
           </a>
         </div>
       </div>
-
-    
       <div className="flex gap-4 mt-6">
         <a href="https://instagram.com/dtawashop" target="_blank" rel="noopener noreferrer">
           <img
             src="src/assets/images/instagram-icon.svg"
             alt="Instagram"
-            className="w-6 h-6"
+            className="w-6 h-6 hover:scale-110 transition-transform duration-300"
           />
         </a>
       </div>
-
-      <div className="mt-4 text-sm">
+      <div className="mt-4 text-sm text-center">
         © 2025 Dtawa. تمامی حقوق محفوظ است.
       </div>
     </div>
