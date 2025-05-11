@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <div
-      className="w-full h-60 text-white flex flex-col items-center justify-center bg-gradient-to-r from-red-600 to-red-800"
+      className="w-full h-60 text-white flex flex-col items-center justify-center bg-gradient-to-r from-red-600 to-red-800 mt-16"
     >
       <div className="w-full max-w-6xl flex flex-col md:flex-row justify-between items-center px-8">
         <div className="text-2xl font-dtawa mb-4 md:mb-0">Dtawa</div>

@@ -3,9 +3,13 @@ import Slide from "../Slide/Slide";
 
 export default function ShopHeader() {
   return (
-    <div className="w-full bg-gradient-to-r from-red-600 to-red-800 h-[400px] sm:h-[500px] md:h-[600px] lg:h-[550px] flex flex-col">
+    <div className="w-full bg-gradient-to-r from-red-600 to-red-800 h-[500px] sm:h-[500px] md:h-[600px] lg:h-[600px] flex flex-col pb-6">
       <Navbar />
-      <h1 className="flex justify-center text-3xl font-bold text-white mb-4">از محصولات جدید مجموعه دتاوا دیدن کنید</h1>
+      <div className="flex flex-col items-center justify-center flex-1">
+        <h1 className="text-3xl font-bold text-white text-center mb-4">
+          از محصولات جدید مجموعه دتاوا دیدن کنید
+        </h1>
+      </div>
       <div className="flex flex-1 items-center justify-center">
         <Slide />
       </div>

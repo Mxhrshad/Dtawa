@@ -12,9 +12,6 @@ export default function Navbar({ hasBackground }) {
         </Link>
 
         <div className="flex flex-wrap items-center gap-2 sm:gap-4 justify-center md:justify-end w-full md:w-auto">
-          <Link to="/" className="hover:text-gray-300 transition-colors duration-300">
-            خانه
-          </Link>
           <Link to="/about" className="hover:text-gray-300 transition-colors duration-300">
             درباره ما
           </Link>
@@ -23,6 +20,9 @@ export default function Navbar({ hasBackground }) {
           </Link>
           <Link to="/shop" className="hover:text-gray-300 transition-colors duration-300">
             خرید
+          </Link>
+          <Link to="/" className="hover:text-gray-300 transition-colors duration-300">
+            خانه
           </Link>
 
           {/* Shopping Cart */}
