@@ -23,7 +23,7 @@ export default function Footer() {
       <div className="flex gap-4 mt-6">
         <a href="https://instagram.com/dtawashop" target="_blank" rel="noopener noreferrer">
           <img
-            src="src/assets/images/instagram-icon.svg"
+            src="../../src/assets/images/instagram-icon.svg"
             alt="Instagram"
             className="w-6 h-6 hover:scale-110 transition-transform duration-300"
           />
