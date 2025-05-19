@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import ProductItem from "../ProductItem/ProductItem";
 
-export function Slide() {
-  const products = Array.from({ length: 5 }, (_, index) => <ProductItem key={index} />);
+export default function Slide({ products }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
@@ -29,11 +28,15 @@ export function Slide() {
       >
         {products.map((product, index) => (
           <div
-            key={index}
+            key={product.id}
             className="flex-shrink-0 w-full flex items-center justify-center overflow-hidden animate-slide-left"
           >
             <div className="w-full h-full flex items-center justify-center overflow-hidden p-2">
-              {product}
+              <ProductItem
+                name={product.title}
+                price={product.price}
+                image={product.image}
+              />
             </div>
           </div>
         ))}
@@ -43,14 +46,14 @@ export function Slide() {
         className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white text-gray-800 w-8 h-8 sm:w-10 sm:h-10 md:px-3 md:py-2 rounded-full shadow-lg hover:bg-gray-100 hover:scale-110 transition-all duration-300 flex items-center justify-center animate-fade-in"
         onClick={previousSlide}
       >
-        <img src="src\assets\images\left-arrow.svg" alt="" />
+        <img src="src/assets/images/left-arrow.svg" alt="" />
       </button>
 
       <button
         className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white text-gray-800 w-8 h-8 sm:w-10 sm:h-10 md:px-3 md:py-2 rounded-full shadow-lg hover:bg-gray-100 hover:scale-110 transition-all duration-300 flex items-center justify-center animate-fade-in"
         onClick={nextSlide}
       >
-        <img src="src\assets\images\right-arrow.svg" alt="" />
+        <img src="src/assets/images/right-arrow.svg" alt="" />
       </button>
 
       <div className="flex justify-center items-center gap-2 mt-4">
@@ -67,5 +70,3 @@ export function Slide() {
     </div>
   );
 }
-
-export default Slide;

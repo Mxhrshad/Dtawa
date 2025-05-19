@@ -1,38 +1,98 @@
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import FilterPanel from "../../components/FilterPanel/FilterPanel";
 import Navbar from "../../components/Navbar/Navbar";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import Shop from "../../components/Shop/Shop";
 import Footer from "../../components/Footer/Footer";
+import { getKeychains } from "../../services/api";
 
 export default function Keychains() {
   const { page } = useParams();
   const navigate = useNavigate();
 
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const currentPage = parseInt(page, 10) || 1; // Default to page 1
   const itemsPerPage = 12;
 
-  // Generate 24 products
-  const products = Array.from({ length: 24 }, (_, index) => ({
-    id: index + 1,
-    name: `Product ${index + 1}`,
-    price: `${(index + 1) * 1000} تومان`,
-  }));
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const keychainsData = await getKeychains();
+        setProducts(keychainsData); // Set the fetched keychains data
+        setFilteredProducts(keychainsData); // Initialize filtered products
+      } catch (error) {
+        console.error("Error fetching keychains:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  // Filter products based on the search term
+  const handleSearch = (searchTerm) => {
+    const filtered = products.filter((product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  };
+
+  // Apply filters from the FilterPanel
+  const handleFilterChange = ({ priceRange, sort }) => {
+    let filtered = [...products];
+
+    // Filter by price range
+    if (priceRange.min || priceRange.max) {
+      filtered = filtered.filter((product) => {
+        const price = parseInt(product.price.replace(/,/g, ""), 10);
+        return (
+          (!priceRange.min || price >= priceRange.min) &&
+          (!priceRange.max || price <= priceRange.max)
+        );
+      });
+    }
+
+    // Sort products
+    if (sort === "newest") {
+      filtered = filtered.sort((a, b) => b.id - a.id);
+    } else if (sort === "expensive") {
+      filtered = filtered.sort(
+        (a, b) => parseInt(b.price.replace(/,/g, ""), 10) - parseInt(a.price.replace(/,/g, ""), 10)
+      );
+    } else if (sort === "cheap") {
+      filtered = filtered.sort(
+        (a, b) => parseInt(a.price.replace(/,/g, ""), 10) - parseInt(b.price.replace(/,/g, ""), 10)
+      );
+    } else if (sort === "discount") {
+      filtered = filtered.filter((product) => product.discount);
+    }
+
+    setFilteredProducts(filtered);
+  };
 
   // Calculate total pages
-  const totalPages = Math.ceil(products.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
   // Get products for the current page
-  const currentProducts = products.slice(
+  const currentProducts = filteredProducts.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
   // Handle page change
   const handlePageChange = (page) => {
-    navigate(`/shop/socks/${page}`); // Update the URL with the selected page
+    navigate(`/shop/keychains/${page}`); // Update the URL with the selected page
     window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top of the page
   };
+
+  if (loading) {
+    return <p className="text-center">در حال بارگذاری...</p>;
+  }
 
   return (
     <div className="w-full h-auto animate-fade-in">
@@ -40,12 +100,12 @@ export default function Keychains() {
       <div className="grid grid-cols-12 gap-4">
         {/* Searchbar */}
         <div className="col-span-12 lg:col-span-9 animate-slide-in-left">
-          <Searchbar />
+          <Searchbar onSearch={handleSearch} />
         </div>
 
         {/* Filter Panel */}
         <div className="col-span-12 lg:col-span-3 row-span-2 animate-slide-in-right">
-          <FilterPanel />
+          <FilterPanel onFilterChange={handleFilterChange} showTypeFilter={false} />
         </div>
 
         {/* Shop */}

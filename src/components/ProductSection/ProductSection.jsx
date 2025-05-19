@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import ProductItem from "../ProductItem/ProductItem";
 
-export default function ProductSection({ title, link }) {
+export default function ProductSection({ title, link, products = [] }) {
   const handleLinkClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top of the page
   };
 
   return (
     <section className="w-full mb-16 animate-fade-in">
-      <h2 className="text-2xl md:text-3xl font-black text-center mb-6 animate-slide-down">{title}</h2>
+      <h2 className="text-2xl md:text-3xl font-black text-center mb-6 animate-slide-down">
+        {title}
+      </h2>
       <hr className="w-full h-1 my-5 animate-fade-in" />
       {link && (
         <Link to={link} onClick={handleLinkClick}>
@@ -18,12 +20,21 @@ export default function ProductSection({ title, link }) {
         </Link>
       )}
       <div className="w-full overflow-x-auto" style={{ direction: "rtl" }}>
-        {/* Add padding to prevent hover overflow */}
-        <div className="flex justify-center items-center gap-6 sm:gap-8 py-4 pr-6 sm:pr-8 lg:pr-16 pl-12 sm:pl-16 lg:pl-20">
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
+        <div
+          className="flex justify-start items-center gap-6 sm:gap-8 py-4 px-4 sm:px-8 lg:px-16"
+        >
+          {products.length > 0 ? (
+            products.map((product) => (
+              <ProductItem
+                key={product.id}
+                name={product.title}
+                price={product.price}
+                image={product.image}
+              />
+            ))
+          ) : (
+            <p className="text-center text-gray-500">محصولی برای نمایش وجود ندارد</p>
+          )}
         </div>
       </div>
     </section>

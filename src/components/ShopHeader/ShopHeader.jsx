@@ -1,7 +1,7 @@
 import Navbar from "../Navbar/Navbar";
 import Slide from "../Slide/Slide";
 
-export default function ShopHeader() {
+export default function ShopHeader({ slideProducts }) {
   return (
     <div className="w-full bg-gradient-to-r from-red-600 to-red-800 h-[500px] sm:h-[500px] md:h-[600px] lg:h-[600px] flex flex-col pb-6 animate-fade-in">
       <Navbar />
@@ -11,7 +11,7 @@ export default function ShopHeader() {
         </h1>
       </div>
       <div className="flex flex-1 items-center justify-center animate-fade-in">
-        <Slide />
+        <Slide products={slideProducts} />
       </div>
     </div>
   );

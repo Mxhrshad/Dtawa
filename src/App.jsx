@@ -12,6 +12,7 @@ function App() {
       <Route path="/shop/socks" element={<Socks />} />
       <Route path="/shop/socks/:page" element={<Socks />} />
       <Route path="/shop/keychains" element={<Keychains />} />
+      <Route path="/shop/keychains/:page" element={<Keychains />} />
     </Routes>
   );
 }

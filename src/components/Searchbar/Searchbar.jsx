@@ -1,33 +1,35 @@
 import { useState } from "react";
 
-export default function Searchbar() {
+export default function Searchbar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+    onSearch(e.target.value); // Pass the search term to the parent component
   };
 
   const clearSearch = () => {
     setSearchTerm("");
+    onSearch(""); // Clear the search in the parent component
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Search logic will be added here once the database is ready
+    onSearch(searchTerm); // Trigger search on form submission
   };
 
   return (
     <form
       onSubmit={handleSubmit}
       className="flex items-center w-full bg-white rounded-full shadow-md px-3 sm:px-4 py-2 my-3 ml-1 animate-fade-in transition-all duration-300 focus-within:ring-2 focus-within:ring-red-600 focus-within:border-red-600 focus-within:shadow-lg"
-      dir="rtl" // Set the direction to RTL
+      dir="rtl"
     >
       <input
         type="text"
         value={searchTerm}
         onChange={handleSearch}
         placeholder="جستجو کنید..."
-        className="flex-grow bg-transparent outline-none text-gray-700 placeholder-gray-400 text-xs sm:text-sm md:text-base text-right" // Align text to the right
+        className="flex-grow bg-transparent outline-none text-gray-700 placeholder-gray-400 text-xs sm:text-sm md:text-base text-right"
       />
       {searchTerm && (
         <button
