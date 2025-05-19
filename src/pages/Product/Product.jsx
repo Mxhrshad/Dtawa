@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import { getKeychains, getSocks } from "../../services/api";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import { useCart } from "../../context/CartContext";
 
 export default function Product() {
   const { id } = useParams(); // Get the product ID from the URL
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     async function fetchProduct() {
@@ -51,6 +53,10 @@ export default function Product() {
     );
   }
 
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
+
   return (
     <div className="flex flex-col w-full h-full">
       {/* Navbar */}
@@ -66,7 +72,7 @@ export default function Product() {
           <img
             src={product.image}
             alt={product.title}
-            className="w-full h-full object-contain rounded-lg" // Added rounded corners
+            className="w-full h-full object-contain rounded-lg"
           />
         </div>
 
@@ -90,7 +96,10 @@ export default function Product() {
           </p>
 
           {/* Add to Cart Button */}
-          <button className="bg-red-600 text-white px-8 py-4 rounded-md hover:bg-red-700 transition-colors duration-300">
+          <button
+            onClick={handleAddToCart}
+            className="bg-red-600 text-white px-8 py-4 rounded-md hover:bg-red-700 transition-colors duration-300"
+          >
             افزودن به سبد خرید
           </button>
         </div>

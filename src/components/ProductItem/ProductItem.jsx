@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 export default function ProductItem({ id, name, price, image }) {
-  console.log("ProductItem Props:", { id, name, price, image }); // Debugging
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart({ id, name, price, image });
+  };
 
   return (
     <div className="h-auto rounded-xl shadow-md flex flex-col items-center justify-center p-2 sm:p-4 bg-white hover:scale-105 transition-transform duration-300">
@@ -18,7 +23,10 @@ export default function ProductItem({ id, name, price, image }) {
           <p className="text-xs sm:text-sm md:text-base font-semibold text-gray-700">
             {price}
           </p>
-          <button className="bg-red-700 text-white w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 flex items-center justify-center rounded-md sm:rounded-lg hover:bg-red-800 transition-transform duration-300">
+          <button
+            onClick={handleAddToCart}
+            className="bg-red-700 text-white w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 flex items-center justify-center rounded-md sm:rounded-lg hover:bg-red-800 transition-transform duration-300"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

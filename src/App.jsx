@@ -3,7 +3,8 @@ import Home from "./pages/Home/Home";
 import Shop from "./pages/Shop/Shop";
 import Socks from "./pages/Socks/Socks";
 import Keychains from "./pages/Keychains/Keychains";
-import Product from "./pages/Product/Product"; // Import the Product page
+import Product from "./pages/Product/Product";
+import Cart from "./pages/Cart/Cart";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/shop/keychains" element={<Keychains />} />
       <Route path="/shop/keychains/:page" element={<Keychains />} />
       <Route path="/product/:id" element={<Product />} />
+      <Route path="/cart" element={<Cart />} />
     </Routes>
   );
 }
