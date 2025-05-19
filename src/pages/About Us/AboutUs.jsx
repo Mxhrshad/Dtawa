@@ -8,7 +8,7 @@ export default function AboutUs() {
       <div className="flex flex-col md:flex-row justify-center items-center p-6">
         {/* Logo Section */}
         <img
-          src="src/assets/images/Logo.png"
+          src="../src/assets/images/Logo.png"
           alt="logo"
           className="w-full md:w-1/3 max-w-xs mb-6 md:mb-0 md:mr-8"
         />
