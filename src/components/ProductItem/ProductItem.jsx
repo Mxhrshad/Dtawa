@@ -1,16 +1,15 @@
-export default function ProductItem({ name, price, image }) {
+import { Link } from "react-router-dom";
+
+export default function ProductItem({ id, name, price, image }) {
+  console.log("ProductItem Props:", { id, name, price, image }); // Debugging
+
   return (
     <div className="h-auto rounded-xl shadow-md flex flex-col items-center justify-center p-2 sm:p-4 bg-white hover:scale-105 transition-transform duration-300">
-      {/* Product Image */}
-      <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-xl overflow-hidden mb-3 sm:mb-4">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      {/* Product Details */}
+      <Link to={`/product/${id}`} className="w-full">
+        <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-xl overflow-hidden mb-3 sm:mb-4">
+          <img src={image} alt={name} className="w-full h-full object-cover" />
+        </div>
+      </Link>
       <div className="flex flex-col items-center justify-center text-center">
         <h3 className="text-xs sm:text-sm md:text-base font-bold mb-2 sm:mb-3">
           {name}

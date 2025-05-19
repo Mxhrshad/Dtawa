@@ -8,6 +8,7 @@ export default function Shop({ products }) {
         {products.map((product) => (
           <ProductItem
             key={product.id}
+            id={product.id} // Pass the id here
             name={product.title}
             price={product.price}
             image={product.image}
