@@ -5,6 +5,7 @@ import Socks from "./pages/Socks/Socks";
 import Keychains from "./pages/Keychains/Keychains";
 import Product from "./pages/Product/Product";
 import Cart from "./pages/Cart/Cart";
+import AboutUs from "./pages/About Us/AboutUs";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/shop/keychains/:page" element={<Keychains />} />
       <Route path="/product/:id" element={<Product />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/aboutus" element={<AboutUs />} />
     </Routes>
   );
 }

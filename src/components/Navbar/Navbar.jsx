@@ -18,11 +18,8 @@ export default function Navbar({ hasBackground }) {
         </Link>
 
         <div className="flex flex-wrap items-center gap-2 sm:gap-4 justify-center md:justify-end w-full md:w-auto">
-          <Link to="/about" className="hover:text-gray-300 transition-colors duration-300">
+          <Link to="/aboutus" className="hover:text-gray-300 transition-colors duration-300">
             درباره ما
-          </Link>
-          <Link to="/contact" className="hover:text-gray-300 transition-colors duration-300">
-            ارتباط با ما
           </Link>
           <Link to="/shop" className="hover:text-gray-300 transition-colors duration-300">
             خرید

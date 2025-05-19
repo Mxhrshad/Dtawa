@@ -15,7 +15,7 @@ export default function HeroArea() {
 
       {/* Subtitle */}
       <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl">
-        بهترین محصولات و خدمات را در دتاوا کشف کنید
+        این جزئیات هستند که مارو مجذوب می‌کنند
       </p>
     </div>
   );

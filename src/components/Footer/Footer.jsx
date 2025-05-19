@@ -6,14 +6,11 @@ export default function Footer() {
       <div className="w-full max-w-6xl flex flex-col md:flex-row justify-between items-center px-8">
         <div className="text-2xl font-dtawa mb-4 md:mb-0">Dtawa</div>
         <div className="flex flex-wrap gap-6 justify-center">
-          <a href="/" className="hover:underline hover:text-gray-300 transition-colors duration-300">
-            خانه
-          </a>
-          <a href="/about" className="hover:underline hover:text-gray-300 transition-colors duration-300">
+          <a href="/aboutus" className="hover:underline hover:text-gray-300 transition-colors duration-300">
             درباره ما
           </a>
-          <a href="/contact" className="hover:underline hover:text-gray-300 transition-colors duration-300">
-            ارتباط با ما
+          <a href="/" className="hover:underline hover:text-gray-300 transition-colors duration-300">
+            خانه
           </a>
           <a href="/shop" className="hover:underline hover:text-gray-300 transition-colors duration-300">
             خرید
