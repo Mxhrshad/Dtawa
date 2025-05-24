@@ -34,7 +34,7 @@ export default function Navbar({ hasBackground }) {
             className="relative flex items-center justify-center w-8 sm:w-10 h-8 sm:h-10 text-black rounded-full hover:bg-gray-200 transition-colors duration-300"
           >
             <img
-              src="public/images/shopping-cart.svg"
+              src="images/shopping-cart.svg"
               alt="Shopping Cart"
               className="w-6 sm:w-8 h-6 sm:h-8"
             />
