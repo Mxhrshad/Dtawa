@@ -46,14 +46,14 @@ export default function Slide({ products }) {
         className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white text-gray-800 w-8 h-8 sm:w-10 sm:h-10 md:px-3 md:py-2 rounded-full shadow-lg hover:bg-gray-100 hover:scale-110 transition-all duration-300 flex items-center justify-center animate-fade-in"
         onClick={previousSlide}
       >
-        <img src="../src/assets/images/left-arrow.svg" alt="" />
+        <img src="public/assets/images/left-arrow.svg" alt="" />
       </button>
 
       <button
         className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white text-gray-800 w-8 h-8 sm:w-10 sm:h-10 md:px-3 md:py-2 rounded-full shadow-lg hover:bg-gray-100 hover:scale-110 transition-all duration-300 flex items-center justify-center animate-fade-in"
         onClick={nextSlide}
       >
-        <img src="../src/assets/images/right-arrow.svg" alt="" />
+        <img src="public/images/right-arrow.svg" alt="" />
       </button>
 
       <div className="flex justify-center items-center gap-2 mt-4">

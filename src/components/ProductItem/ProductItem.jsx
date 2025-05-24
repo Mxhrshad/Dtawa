@@ -10,7 +10,7 @@ export default function ProductItem({ id, name, price, image }) {
 
   return (
     <div className="h-auto rounded-xl shadow-md flex flex-col items-center justify-center p-2 sm:p-4 bg-white hover:scale-105 transition-transform duration-300">
-      <Link to={`/product/${id}`} className="w-full">
+      <Link to={`/product/${id}`} className="w-full flex items-center justify-center">
         <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-xl overflow-hidden mb-3 sm:mb-4">
           <img src={image} alt={name} className="w-full h-full object-cover" />
         </div>
