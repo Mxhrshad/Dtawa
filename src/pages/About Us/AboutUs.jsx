@@ -6,14 +6,14 @@ export default function AboutUs() {
     <div className="h-auto min-h-screen flex flex-col bg-gradient-to-r from-red-600 to-red-800 text-white">
       <Navbar />
       <div className="flex flex-col md:flex-row justify-center items-center p-6">
-        {/* Logo Section */}
+
         <img
           src="images/Logo.png"
           alt="logo"
           className="w-full md:w-1/3 max-w-xs mb-6 md:mb-0 md:mr-8"
         />
 
-        {/* Text Section */}
+
         <div className="w-full md:w-2/3 text-center md:text-right">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">درباره دتاوا</h1>
           <p className="text-lg leading-relaxed">

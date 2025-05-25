@@ -7,16 +7,13 @@ export default function Cart() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Navbar */}
       <Navbar />
 
-      {/* Main Content */}
       <div className="flex-grow flex flex-col items-center w-full p-4 sm:p-6">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 sm:mb-8">
           سبد خرید
         </h1>
 
-        {/* Cart Table */}
         <div className="w-full max-w-4xl overflow-x-auto">
           <table className="w-full border-collapse border border-gray-300 text-right">
             <thead className="bg-gray-100">
@@ -66,7 +63,6 @@ export default function Cart() {
           </table>
         </div>
 
-        {/* Empty Cart Message */}
         {cart.length === 0 && (
           <p className="text-gray-500 text-center mt-6">
             سبد خرید شما خالی است.
@@ -74,7 +70,6 @@ export default function Cart() {
         )}
       </div>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

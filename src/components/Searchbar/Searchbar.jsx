@@ -5,17 +5,17 @@ export default function Searchbar({ onSearch }) {
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
-    onSearch(e.target.value); // Pass the search term to the parent component
+    onSearch(e.target.value);
   };
 
   const clearSearch = () => {
     setSearchTerm("");
-    onSearch(""); // Clear the search in the parent component
+    onSearch("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(searchTerm); // Trigger search on form submission
+    onSearch(searchTerm);
   };
 
   return (

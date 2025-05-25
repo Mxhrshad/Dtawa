@@ -3,7 +3,7 @@ import ProductItem from "../ProductItem/ProductItem";
 
 export default function ProductSection({ title, link, products = [] }) {
   const handleLinkClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -27,7 +27,7 @@ export default function ProductSection({ title, link, products = [] }) {
             products.map((product) => (
               <ProductItem
                 key={product.id}
-                id={product.id} // Pass the id here
+                id={product.id}
                 name={product.title}
                 price={product.price}
                 image={product.image}

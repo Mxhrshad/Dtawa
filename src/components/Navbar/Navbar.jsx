@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 
 export default function Navbar({ hasBackground }) {
-  const { cart } = useCart(); // Access the cart from the context
+  const { cart } = useCart();
 
-  // Calculate the total number of items in the cart
+
   const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
@@ -28,17 +28,16 @@ export default function Navbar({ hasBackground }) {
             خانه
           </Link>
 
-          {/* Shopping Cart */}
           <Link
             to="/cart"
             className="relative flex items-center justify-center w-8 sm:w-10 h-8 sm:h-10 text-black rounded-full hover:bg-gray-200 transition-colors duration-300"
           >
             <img
-              src="images/shopping-cart.svg"
+              src="/images/shopping-cart.svg"
               alt="Shopping Cart"
               className="w-6 sm:w-8 h-6 sm:h-8"
             />
-            {/* Cart Item Count */}
+
             {cartItemCount > 0 && (
               <span className="absolute top-0 right-0 w-4 sm:w-5 h-4 sm:h-5 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
                 {cartItemCount}

@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import { useCart } from "../../context/CartContext";
 
 export default function Product() {
-  const { id } = useParams(); // Get the product ID from the URL
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const { addToCart } = useCart();
@@ -14,13 +14,11 @@ export default function Product() {
   useEffect(() => {
     async function fetchProduct() {
       try {
-        // Fetch keychains and socks
         const keychains = await getKeychains();
         const socks = await getSocks();
 
-        // Combine all products and find the one with the matching ID
         const allProducts = [...keychains, ...socks];
-        const foundProduct = allProducts.find((item) => item.id === id); // Ensure id is compared as a string
+        const foundProduct = allProducts.find((item) => item.id === id);
 
         setProduct(foundProduct);
       } catch (error) {
@@ -59,15 +57,13 @@ export default function Product() {
 
   return (
     <div className="flex flex-col w-full h-full">
-      {/* Navbar */}
       <Navbar />
 
-      {/* Main Content (RTL) */}
       <div
         className="flex flex-col lg:flex-row items-center justify-between w-full h-full p-6 gap-8"
         style={{ direction: "rtl" }}
       >
-        {/* Product Image */}
+
         <div className="w-full lg:w-1/2 h-[50vh] overflow-hidden">
           <img
             src={product.image}
@@ -76,7 +72,6 @@ export default function Product() {
           />
         </div>
 
-        {/* Product Details */}
         <div className="w-full lg:w-1/2 text-right">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">
             {product.title}
@@ -95,7 +90,6 @@ export default function Product() {
             بگیرید.
           </p>
 
-          {/* Add to Cart Button */}
           <button
             onClick={handleAddToCart}
             className="bg-red-600 text-white px-8 py-4 rounded-md hover:bg-red-700 transition-colors duration-300"
@@ -105,7 +99,6 @@ export default function Product() {
         </div>
       </div>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

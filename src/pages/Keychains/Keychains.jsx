@@ -15,15 +15,15 @@ export default function Keychains() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const currentPage = parseInt(page, 10) || 1; // Default to page 1
+  const currentPage = parseInt(page, 10) || 1;
   const itemsPerPage = 12;
 
   useEffect(() => {
     async function fetchData() {
       try {
         const keychainsData = await getKeychains();
-        setProducts(keychainsData); // Set the fetched keychains data
-        setFilteredProducts(keychainsData); // Initialize filtered products
+        setProducts(keychainsData);
+        setFilteredProducts(keychainsData);
       } catch (error) {
         console.error("Error fetching keychains:", error);
       } finally {
@@ -34,7 +34,6 @@ export default function Keychains() {
     fetchData();
   }, []);
 
-  // Filter products based on the search term
   const handleSearch = (searchTerm) => {
     const filtered = products.filter((product) =>
       product.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -42,11 +41,9 @@ export default function Keychains() {
     setFilteredProducts(filtered);
   };
 
-  // Apply filters from the FilterPanel
   const handleFilterChange = ({ priceRange, sort }) => {
     let filtered = [...products];
 
-    // Filter by price range
     if (priceRange.min || priceRange.max) {
       filtered = filtered.filter((product) => {
         const price = parseInt(product.price.replace(/,/g, ""), 10);
@@ -57,7 +54,6 @@ export default function Keychains() {
       });
     }
 
-    // Sort products
     if (sort === "newest") {
       filtered = filtered.sort((a, b) => b.id - a.id);
     } else if (sort === "expensive") {
@@ -75,19 +71,16 @@ export default function Keychains() {
     setFilteredProducts(filtered);
   };
 
-  // Calculate total pages
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
-  // Get products for the current page
   const currentProducts = filteredProducts.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  // Handle page change
   const handlePageChange = (page) => {
-    navigate(`/shop/keychains/${page}`); // Update the URL with the selected page
-    window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top of the page
+    navigate(`/shop/keychains/${page}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   if (loading) {
@@ -98,23 +91,20 @@ export default function Keychains() {
     <div className="w-full h-auto animate-fade-in">
       <Navbar />
       <div className="grid grid-cols-12 gap-4">
-        {/* Searchbar */}
+
         <div className="col-span-12 lg:col-span-9 animate-slide-in-left">
           <Searchbar onSearch={handleSearch} />
         </div>
 
-        {/* Filter Panel */}
         <div className="col-span-12 lg:col-span-3 row-span-2 animate-slide-in-right">
           <FilterPanel onFilterChange={handleFilterChange} showTypeFilter={false} />
         </div>
 
-        {/* Shop */}
         <div className="col-span-12 lg:col-span-9 animate-fade-in">
           <Shop products={currentProducts} />
         </div>
       </div>
 
-      {/* Pagination */}
       <div className="flex justify-center items-center gap-2 mt-6">
         {Array.from({ length: totalPages }, (_, index) => (
           <button

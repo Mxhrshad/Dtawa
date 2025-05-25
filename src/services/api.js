@@ -1,15 +1,15 @@
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "http://localhost:8000" // Ensure this matches your server's base URL
+  baseURL: "https://raw.githubusercontent.com/Mxhrshad/Dtawa/main/data/db.json"
 });
 
 export async function getKeychains() {
-  const response = await client.get("/keychain"); // Fetch the keychain data
-  return response.data;
+  const response = await client.get();
+  return response.data.keychain; 
 }
 
 export async function getSocks() {
-  const response = await client.get("/socks"); // Fetch the socks data
-  return response.data;
+  const response = await client.get();
+  return response.data.socks;
 }

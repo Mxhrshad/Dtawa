@@ -38,20 +38,20 @@ export default function Main() {
   return (
     <div className="flex flex-col items-center w-full h-full px-4 md:px-10 lg:px-20 mt-10">
 
-      {/* Combined Section */}
+
       <ProductSection
         title="محصولات ترکیبی"
         products={combinedProducts}
       />
 
-      {/* Keychains Section */}
+
       <ProductSection
         title="جدیدترین جاسوییچی‌ها"
         products={keychains}
         link="/shop/keychains"
       />
 
-      {/* Socks Section */}
+
       <ProductSection
         title="جدیدترین جوراب‌ها"
         products={socks}

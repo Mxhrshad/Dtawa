@@ -15,15 +15,15 @@ export default function Socks() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const currentPage = parseInt(page, 10) || 1; // Default to page 1
+  const currentPage = parseInt(page, 10) || 1;
   const itemsPerPage = 12;
 
   useEffect(() => {
     async function fetchData() {
       try {
         const socksData = await getSocks();
-        setProducts(socksData); // Set the fetched socks data
-        setFilteredProducts(socksData); // Initialize filtered products
+        setProducts(socksData);
+        setFilteredProducts(socksData);
       } catch (error) {
         console.error("Error fetching socks:", error);
       } finally {
@@ -34,7 +34,6 @@ export default function Socks() {
     fetchData();
   }, []);
 
-  // Filter products based on the search term
   const handleSearch = (searchTerm) => {
     const filtered = products.filter((product) =>
       product.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -42,18 +41,15 @@ export default function Socks() {
     setFilteredProducts(filtered);
   };
 
-  // Apply filters from the FilterPanel
   const handleFilterChange = ({ type, priceRange, sort }) => {
     let filtered = [...products];
 
-    // Filter by type
     if (type.includes("children")) {
       filtered = filtered.filter((product) => product.forkids === true);
     } else if (type.includes("adult")) {
       filtered = filtered.filter((product) => product.forkids !== true);
     }
 
-    // Filter by price range
     if (priceRange.min || priceRange.max) {
       filtered = filtered.filter((product) => {
         const price = parseInt(product.price.replace(/,/g, ""), 10);
@@ -64,7 +60,6 @@ export default function Socks() {
       });
     }
 
-    // Sort products
     if (sort === "newest") {
       filtered = filtered.sort((a, b) => b.id - a.id);
     } else if (sort === "expensive") {
@@ -82,19 +77,17 @@ export default function Socks() {
     setFilteredProducts(filtered);
   };
 
-  // Calculate total pages
+
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
-  // Get products for the current page
   const currentProducts = filteredProducts.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  // Handle page change
   const handlePageChange = (page) => {
-    navigate(`/shop/socks/${page}`); // Update the URL with the selected page
-    window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top of the page
+    navigate(`/shop/socks/${page}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   if (loading) {
@@ -105,23 +98,19 @@ export default function Socks() {
     <div className="w-full h-auto animate-fade-in">
       <Navbar />
       <div className="grid grid-cols-12 gap-4">
-        {/* Searchbar */}
         <div className="col-span-12 lg:col-span-9 animate-slide-in-left">
           <Searchbar onSearch={handleSearch} />
         </div>
 
-        {/* Filter Panel */}
         <div className="col-span-12 lg:col-span-3 row-span-2 animate-slide-in-right">
           <FilterPanel onFilterChange={handleFilterChange} />
         </div>
 
-        {/* Shop */}
         <div className="col-span-12 lg:col-span-9 animate-fade-in">
           <Shop products={currentProducts} />
         </div>
       </div>
 
-      {/* Pagination */}
       <div className="flex justify-center items-center gap-2 mt-6">
         {Array.from({ length: totalPages }, (_, index) => (
           <button

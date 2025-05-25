@@ -16,13 +16,13 @@ export default function Shop() {
         const socksData = await getSocks();
         const keychainsData = await getKeychains();
 
-        // Get 3 newest socks and 2 newest keychains for the slide
+
         const newestSocks = socksData.slice(-3);
         const newestKeychains = keychainsData.slice(-2);
 
         setSlideProducts([...newestSocks, ...newestKeychains]);
 
-        // Set all socks and keychains for the main sections
+
         setSocks(socksData);
         setKeychains(keychainsData);
       } catch (error) {
